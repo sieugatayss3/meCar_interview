@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:me_car_interview/configs/styles.dart';
 import 'package:me_car_interview/widgets/widgets.dart';
 
+import 'screens.dart';
+
 class LogoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,12 @@ class LogoutScreen extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: CustomRaisedButton(
-                    press: () {},
+                    press: () {
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
                     label: 'Login',
                     color: Colors.white,
                   ),
@@ -48,7 +55,12 @@ class LogoutScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: CustomRaisedButton(
-                    press: () {},
+                    press: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterScreen()));
+                    },
                     label: 'Register',
                     color: Colors.black,
                   ),

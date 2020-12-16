@@ -15,7 +15,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
     Scaffold(),
     Scaffold(),
     Scaffold(),
-    Scaffold(),
+    UserScreen(),
   ];
 
   int _currentIndex = 0;

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13960601361",
+    "project_id": "mecar-interview-d1c20",
+    "storage_bucket": "mecar-interview-d1c20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13960601361:android:1da0fd017da5beac69f6b0",
+        "android_client_info": {
+          "package_name": "com.example.me_car_interview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13960601361-1v5jmb6f9hjgup2vc4m4akna77mh48i7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj8Ti41f4fIRQNt0g069XOkfRanD_ygoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13960601361-1v5jmb6f9hjgup2vc4m4akna77mh48i7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,22 +1,29 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:me_car_interview/configs/configs.dart';
 import 'package:me_car_interview/configs/size_config.dart';
 import 'package:me_car_interview/configs/styles.dart';
+import 'package:me_car_interview/provider/auth_provider.dart';
 import 'package:me_car_interview/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
-class RegisterScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
+  final _globalKey = GlobalKey<ScaffoldState>();
+  String email = '';
+  String password = '';
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    final _formKey = GlobalKey<FormState>();
-    String email;
 
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -25,7 +32,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -37,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Register',
+              'Login',
               style: Styles.pageTitleStyle,
             ),
             SizedBox(
@@ -48,9 +57,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    autocorrect: false,
+                    validator: (value) {
+                      if (value.isEmpty ||
+                          !emailValidatorRegExp.hasMatch(value)) return '';
+                      return null;
+                    },
+                    keyboardType: TextInputType.emailAddress,
                     onSaved: (value) => email = value,
                     onChanged: (value) => email = value,
                     decoration: InputDecoration(hintText: 'Email'),
+                  ),
+                  SizedBox(
+                    height:
+                        getProportionateScreenWidth(Styles.globalPadding * 1.5),
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    autocorrect: false,
+                    onSaved: (value) => password = value,
+                    onChanged: (value) => password = value,
+                    validator: (value) {
+                      if (value.isEmpty) return '';
+                      if (value.length < 7) {
+                        return '';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(hintText: 'Password'),
                   )
                 ],
               ),
@@ -61,9 +95,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(
               width: double.infinity,
               child: CustomRaisedButton(
-                press: () {},
+                press: () async {
+                  if (_formKey.currentState.validate()) {
+                    if (!await context
+                        .read<AuthService>()
+                        .signInWithEmailAndPassword(
+                            email: email, password: password)) {
+                      _globalKey.currentState.showSnackBar(
+                          SnackBar(content: Text('Unable to login.')));
+                    } else {
+                      Navigator.pop(context);
+                    }
+                  }
+                },
                 color: Colors.black,
-                label: 'Register',
+                label: 'Login',
               ),
             ),
             SizedBox(
