@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         inputDecorationTheme: inputDecorationTheme(),
       ),
-      home: BottomNavbarScreen(),
+      home: LogoutScreen(),
     );
   }
 }

@@ -6,9 +6,11 @@ class UserAvatarAndName extends StatelessWidget {
     this.name = '',
     this.avatar,
     this.code = '',
+    this.color,
   }) : super(key: key);
 
   final String name, avatar, code;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +28,18 @@ class UserAvatarAndName extends StatelessWidget {
           children: [
             Text(
               name,
-              style: TextStyle(fontSize: 13.0, fontWeight: FontWeight.w900),
+              style: TextStyle(
+                color: color ?? Colors.black,
+                fontSize: 13.0,
+                fontWeight: FontWeight.w900,
+              ),
             ),
             Text(
               code,
-              style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  color: color ?? Colors.black,
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w400),
             ),
           ],
         )
