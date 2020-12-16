@@ -18,7 +18,6 @@ class ImagesServive with ChangeNotifier {
   loadMore() {
     var clone = [...imagedata];
     imagedata.addAll(clone);
-    print(imagedata);
     notifyListeners();
   }
 }

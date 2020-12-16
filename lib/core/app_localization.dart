@@ -33,7 +33,6 @@ class AppLocalizations {
   }
 
   String translate(String key) {
-    print(_localizedStrings);
     return _localizedStrings[key];
   }
 

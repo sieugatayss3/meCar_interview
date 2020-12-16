@@ -13,6 +13,7 @@ class AuthService with ChangeNotifier {
 
   AuthService.instance() : _auth = FirebaseAuth.instance {
     _auth.authStateChanges().listen((firebaseUser) {
+      print('listem ===> $firebaseUser');
       if (firebaseUser == null) {
         _appState = AppState.unauthenticated;
       } else {
@@ -48,8 +49,8 @@ class AuthService with ChangeNotifier {
   Future<bool> signInWithEmailAndPassword(
       {String password, String email}) async {
     try {
-      _appState = AppState.authenticated;
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      _appState = AppState.authenticated;
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
