@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:me_car_interview/configs/styles.dart';
 import 'package:me_car_interview/model/image_model.dart';
+import 'package:me_car_interview/provider/images_provider.dart';
 import 'package:me_car_interview/widgets/widgets.dart';
+import 'package:provider/provider.dart';
+
 import '../configs/size_config.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final imageServive = Provider.of<ImagesServive>(context);
+
     SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
@@ -62,24 +72,7 @@ class HomeScreen extends StatelessWidget {
                   height:
                       getProportionateScreenWidth(Styles.globalPadding * 1.2),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    StaggeredGridView.countBuilder(
-                      physics: ScrollPhysics(),
-                      crossAxisCount: 2,
-                      itemCount: imagedata.length,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) =>
-                          Container(
-                              color: Colors.green,
-                              child: Image.asset(imagedata[index].image)),
-                      staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-                      mainAxisSpacing: 10.0,
-                      crossAxisSpacing: 10.0,
-                    ),
-                  ],
-                ),
+                buildGridView(imageServive.imagedata),
                 SizedBox(
                   height: getProportionateScreenWidth(Styles.globalPadding * 2),
                 ),
@@ -88,7 +81,9 @@ class HomeScreen extends StatelessWidget {
                   child: CustomRaisedButton(
                     color: Colors.white,
                     label: 'See more',
-                    press: () {},
+                    press: () {
+                      imageServive.loadMore();
+                    },
                   ),
                 ),
                 SizedBox(
@@ -99,6 +94,25 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Column buildGridView(itemList) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        StaggeredGridView.countBuilder(
+          physics: ScrollPhysics(),
+          crossAxisCount: 2,
+          itemCount: itemList.length,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) => Container(
+              color: Colors.green, child: Image.asset(itemList[index].image)),
+          staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 10.0,
+        ),
+      ],
     );
   }
 }
