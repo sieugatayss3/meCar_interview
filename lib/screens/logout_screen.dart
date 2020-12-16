@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:me_car_interview/configs/styles.dart';
+import 'package:me_car_interview/core/app_localization.dart';
 import 'package:me_car_interview/widgets/widgets.dart';
 
 import 'screens.dart';
@@ -41,12 +42,12 @@ class LogoutScreen extends StatelessWidget {
                 Expanded(
                   child: CustomRaisedButton(
                     press: () {
-                       Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginScreen()));
                     },
-                    label: 'Login',
+                    label: getTranslated(context, 'login'),
                     color: Colors.white,
                   ),
                 ),
@@ -61,7 +62,7 @@ class LogoutScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => RegisterScreen()));
                     },
-                    label: 'Register',
+                    label: getTranslated(context, 'register'),
                     color: Colors.black,
                   ),
                 ),

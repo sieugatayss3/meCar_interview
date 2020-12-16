@@ -18,7 +18,7 @@ class CustomRaisedButton extends StatelessWidget {
     return RaisedButton(
         color: color,
         onPressed: press,
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         shape: RoundedRectangleBorder(
           side: BorderSide(color: Colors.black, width: 2.0),
           borderRadius: BorderRadius.circular(6),

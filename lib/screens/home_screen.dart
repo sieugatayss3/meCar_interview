@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:me_car_interview/configs/styles.dart';
+import 'package:me_car_interview/core/app_localization.dart';
 import 'package:me_car_interview/model/image_model.dart';
 import 'package:me_car_interview/provider/images_provider.dart';
 import 'package:me_car_interview/widgets/widgets.dart';
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: getProportionateScreenWidth(40),
                 ),
                 Text(
-                  'Discover',
+                  getTranslated(context, 'discover').toUpperCase(),
                   style: Styles.pageTitleStyle,
                 ),
                 SizedBox(

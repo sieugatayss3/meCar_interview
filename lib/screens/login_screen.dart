@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:me_car_interview/configs/configs.dart';
 import 'package:me_car_interview/configs/size_config.dart';
 import 'package:me_car_interview/configs/styles.dart';
+import 'package:me_car_interview/core/app_localization.dart';
 import 'package:me_car_interview/provider/auth_provider.dart';
 import 'package:me_car_interview/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Login',
+              getTranslated(context, 'login'),
               style: Styles.pageTitleStyle,
             ),
             SizedBox(
@@ -109,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   }
                 },
                 color: Colors.black,
-                label: 'Login',
+                label: getTranslated(context, 'login'),
               ),
             ),
             SizedBox(
