@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:me_car_interview/configs/styles.dart';
 import 'package:me_car_interview/model/image_model.dart';
+import 'package:me_car_interview/widgets/widgets.dart';
 import '../configs/size_config.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -58,7 +59,8 @@ class HomeScreen extends StatelessWidget {
                   style: Styles.sectionTitleStyle,
                 ),
                 SizedBox(
-                  height: getProportionateScreenWidth(Styles.globalPadding * 1.2),
+                  height:
+                      getProportionateScreenWidth(Styles.globalPadding * 1.2),
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.min,
@@ -78,50 +80,25 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: getProportionateScreenWidth(Styles.globalPadding * 2),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: CustomRaisedButton(
+                    color: Colors.white,
+                    label: 'See more',
+                    press: () {},
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(Styles.globalPadding * 2),
+                ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class UserAvatarAndName extends StatelessWidget {
-  const UserAvatarAndName({
-    Key key,
-    this.name = '',
-    this.avatar,
-    this.code = '',
-  }) : super(key: key);
-
-  final String name, avatar, code;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        CircleAvatar(
-          radius: 16,
-          backgroundImage: AssetImage(avatar ?? 'assets/images/meo6.jpg'),
-        ),
-        SizedBox(
-          width: 8,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name,
-              style: TextStyle(fontSize: 13.0, fontWeight: FontWeight.w900),
-            ),
-            Text(
-              code,
-              style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400),
-            ),
-          ],
-        )
-      ],
     );
   }
 }

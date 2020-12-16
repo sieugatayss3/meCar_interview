@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:me_car_interview/core/utils.dart';
+import 'package:me_car_interview/screens/screens.dart';
 
 import 'home_screen.dart';
 
@@ -14,7 +15,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
     Scaffold(),
     Scaffold(),
     Scaffold(),
-    Scaffold(),
+    RegisterScreen(),
   ];
 
   int _currentIndex = 0;
