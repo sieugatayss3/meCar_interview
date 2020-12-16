@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:me_car_interview/configs/styles.dart';
 import 'package:me_car_interview/screens/screens.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Colors.white,
+        inputDecorationTheme: inputDecorationTheme(),
       ),
       home: BottomNavbarScreen(),
     );

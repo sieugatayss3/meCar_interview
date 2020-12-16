@@ -28,7 +28,7 @@ class CustomRaisedButton extends StatelessWidget {
           style: TextStyle(
               fontWeight: FontWeight.w900,
               fontSize: 13.0,
-              color: color != null ? Colors.black : Colors.white),
+              color: color == null ? Colors.black : Colors.white),
         ));
   }
 }
